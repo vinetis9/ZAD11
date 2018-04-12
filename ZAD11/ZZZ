@@ -1,0 +1,27 @@
+fstream plik;
+	plik.open("kolekcja.txt", ios::out);
+	plik << kolekcja;
+	plik.close();
+  
+  void KolekcjaFigur::usunZKolekcji(int indeks)
+{
+	Figura *temp = new Figura[liczba_figur - 1];
+
+	for (int i = 0; i < indeks; i++)
+		temp[i] = figury[i];
+
+	for (int i = indeks; i < liczba_figur-1; i++)
+		temp[i] = figury[i+1];
+
+	delete[]figury;
+	figury = temp;
+	liczba_figur--;
+	
+}
+
+ostream& operator << (ostream &s, KolekcjaFigur &k) {
+	for (int i = 0; i < k.liczba_figur; i++)
+		s << k.figury[i].zwrocCene() << k.figury[i].zwrocMiejscePrzechowania() << k.figury[i].zwrocNazwe() << endl;
+
+	return s;
+}
