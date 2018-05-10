@@ -1,3 +1,5 @@
+Zadanie 1:
+
 try {
 			cin >> wybor;
 
@@ -16,3 +18,33 @@ try {
 			cin.clear();
 			cin.ignore(50, '\n');
 		}
+		
+Zadanie 3:
+przed mainfunkcja:
+bool sortujPoNumerze(Produkt *pr, Produkt *pro) { return pr->numer_katalogowy < pro->numer_katalogowy; }
+
+w mainie:
+sort(produkty.begin(), produkty.end(), sortujPoNumerze );
+for (size_t i = 0; i<produkty.size(); i++)
+cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << endl;
+
+Zadanie 2:
+Konstruktor klasy:
+
+KomputerStacjonarny(int numer_katalogowy, RodzajObudowy typ_obudowy) : Komputer(numer_katalogowy), rodzaj(typ_obudowy) { }
+
+Wyswietlanie w case 4:
+	for (size_t i = 0; i < produkty.size(); i++) {
+
+				if (dynamic_cast<KomputerStacjonarny*>(produkty[i]) != nullptr)
+					cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << endl;
+				else
+				{
+					KomputerStacjonarny *wskaznik = dynamic_cast<KomputerStacjonarny*>(produkty[i]);
+					cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << wskaznik->zwrocRodzaj() << endl;
+				}
+
+
+			}
+			
+			+zrobic setter
