@@ -34,17 +34,26 @@ Konstruktor klasy:
 KomputerStacjonarny(int numer_katalogowy, RodzajObudowy typ_obudowy) : Komputer(numer_katalogowy), rodzaj(typ_obudowy) { }
 
 Wyswietlanie w case 4:
-	for (size_t i = 0; i < produkty.size(); i++) {
+		case 4:
+			for (size_t i = 0; i < produkty.size(); i++) {
 
-				if (dynamic_cast<KomputerStacjonarny*>(produkty[i]) != nullptr)
-					cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << endl;
-				else
-				{
+				if (dynamic_cast<KomputerStacjonarny*>(produkty[i]) != nullptr) {
 					KomputerStacjonarny *wskaznik = dynamic_cast<KomputerStacjonarny*>(produkty[i]);
 					cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << wskaznik->zwrocRodzaj() << endl;
+				}
+				else
+				{
+				
+					cout << produkty[i]->zwrocKategorie() << " : " << produkty[i]->numer_katalogowy << endl;
 				}
 
 
 			}
+
 			
-			+zrobic setter
+			break;
+			Plus w KomputerStacjonarny:
+				RodzajObudowy zwrocRodzaj() {
+		return rodzaj;
+	}
+
