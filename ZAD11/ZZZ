@@ -1,27 +1,18 @@
-fstream plik;
-	plik.open("kolekcja.txt", ios::out);
-	plik << kolekcja;
-	plik.close();
-  
-  void KolekcjaFigur::usunZKolekcji(int indeks)
-{
-	Figura *temp = new Figura[liczba_figur - 1];
+try {
+			cin >> wybor;
 
-	for (int i = 0; i < indeks; i++)
-		temp[i] = figury[i];
+			if (wybor > 5 || wybor < 1)
 
-	for (int i = indeks; i < liczba_figur-1; i++)
-		temp[i] = figury[i+1];
+				throw 1;
+			
+		}
 
-	delete[]figury;
-	figury = temp;
-	liczba_figur--;
-	
-}
+		catch (int) {
+			cout << "Blad zakresu" << endl;
+		}
 
-ostream& operator << (ostream &s, KolekcjaFigur &k) {
-	for (int i = 0; i < k.liczba_figur; i++)
-		s << k.figury[i].zwrocCene() << k.figury[i].zwrocMiejscePrzechowania() << k.figury[i].zwrocNazwe() << endl;
-
-	return s;
-}
+		catch (istream::failure) {
+			cout << "Blad danych" << endl;
+			cin.clear();
+			cin.ignore(50, '\n');
+		}
